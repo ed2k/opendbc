@@ -378,10 +378,41 @@ BO_ 1568 SEATS_DOORS: 8 XXX
  SG_ DOOR_OPEN_RR : 43|1@0+ (1,0) [0|1] "" XXX
  SG_ DOOR_OPEN_FR : 44|1@0+ (1,0) [0|1] "" XXX
 
+BO_ 186 MSG_0xBA: 8 XXX
+
+BO_ 562 MSG_0x232: 8 XXX
+
+BO_ 708 ENGINE_SPEED: 8 XXX
+
+BO_ 948 APERIODIC: 8 XXX
+
+BO_ 920 FUEL: 8 XXX
+
+BO_ 705 THROTTLE_PEDAL: 8 XXX
+
+BO_ 1600 0x640: 8 XXX
+
+BO_ 1592 638: 8 XXX
+
+BO_ 1584 630: 8 XXX
+
+BO_ 1572 624: 8 XXX
+
+BO_ 1570 622: 8 XXX
+
+BO_ 1569 621: 8 XXX
+
+BO_ 1553 611: 8 XXX
+
+
+
 
 CM_ SG_ 36 ACCEL_Y "unit is tbd";
 CM_ SG_ 36 YAW_RATE "verify";
 CM_ SG_ 36 STEERING_TORQUE "does not seem the steer torque, tbd";
+CM_ SG_ 37 STEER_FRACTION "1/15th of the signal STEER_ANGLE, which is 1.5 deg; note that 0x8 is never set";
+CM_ SG_ 37 STEER_RATE "factor is tbd";
+CM_ SG_ 467 SET_SPEED "43 kph are shown as 28mph, so conversion isnt perfect";
 CM_ SG_ 550 BRAKE_PRESSURE "seems prop to pedal force";
 CM_ SG_ 550 BRAKE_POSITION "seems proportional to pedal displacement, unclear the max value of 0x1c8";
 CM_ SG_ 560 BRAKE_LIGHTS "double check";
@@ -390,20 +421,16 @@ CM_ SG_ 608 STEER_TORQUE_EPS "0.5 factor to be comparable with STEER_TORQUE_CMD"
 CM_ SG_ 608 STEER_TORQUE_DRIVER "driver torque";
 CM_ SG_ 608 STEER_OVERRIDE "set when driver torque exceeds a certain value";
 CM_ SG_ 614 ANGLE "set to measured angle when ipas control isn't active";
-CM_ SG_ 37 STEER_FRACTION "1/15th of the signal STEER_ANGLE, which is 1.5 deg; note that 0x8 is never set";
-CM_ SG_ 37 STEER_RATE "factor is tbd";
-CM_ SG_ 467 SET_SPEED "43 kph are shown as 28mph, so conversion isnt perfect";
 CM_ SG_ 1042 SET_ME_1 "unclear what this is, nut it's always 1 in drive traces";
-VAL_ 295 GEAR 0 "P" 1 "R" 2 "N" 3 "D" 4 "B";
+VAL_ 295 GEAR 0 "P" 1 "R" 2 "N" 3 "D" 4 "B" ;
 VAL_ 466 CRUISE_STATE 8 "active" 7 "standstill" 1 "off" ;
-VAL_ 610 STATE 5 "override" 3 "enabled" 1 "disabled";
-VAL_ 614 STATE 3 "enabled" 1 "disabled";
-VAL_ 614 DIRECTION_CMD 3 "right" 2 "center" 1 "left";
+VAL_ 610 STATE 5 "override" 3 "enabled" 1 "disabled" ;
+VAL_ 614 STATE 3 "enabled" 1 "disabled" ;
+VAL_ 614 DIRECTION_CMD 3 "right" 2 "center" 1 "left" ;
+VAL_ 921 CRUISE_CONTROL_STATE 2 "disabled" 11 "hold" 10 "hold_waiting_user_cmd" 6 "enabled" 5 "faulted" ;
+VAL_ 1042 BARRIERS 3 "both" 2 "right" 1 "left" 0 "none" ;
+VAL_ 1042 RIGHT_LINE 3 "orange" 2 "double" 1 "solid" 0 "none" ;
+VAL_ 1042 LEFT_LINE 3 "orange" 2 "double" 1 "solid" 0 "none" ;
+VAL_ 1042 LDA_ALERT 3 "hold with continuous beep" 2 "LDA unavailable" 1 "hold" 0 "none" ;
 VAL_ 1556 TURN_SIGNALS 3 "none" 2 "right" 1 "left" ;
-VAL_ 1042 LDA_ALERT 3 "hold with continuous beep" 2 "LDA unavailable" 1 "hold" 0 "none";
-VAL_ 1042 BARRIERS 3 "both" 2 "right" 1 "left" 0 "none";
-VAL_ 1042 RIGHT_LINE 3 "orange" 2 "double" 1 "solid" 0 "none";
-VAL_ 1042 LEFT_LINE 3 "orange" 2 "double" 1 "solid" 0 "none";
-VAL_ 921 CRUISE_CONTROL_STATE 2 "disabled" 11 "hold" 10 "hold_waiting_user_cmd" 6 "enabled" 5 "faulted";
-
 CM_ "CHFFR_METRIC 37 STEER_ANGLE STEER_ANGLE 0.36 180";

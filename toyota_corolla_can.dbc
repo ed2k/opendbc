@@ -59,8 +59,7 @@ BO_ 170 WHEEL_SPEEDS: 8 XXX
 BO_ 176 WHEEL_SPEED_1: 8 XXX
  SG_ NEW_SIGNAL_1 : 7|16@0+ (1,0) [0|1] "" XXX
  SG_ NEW_SIGNAL_2 : 23|16@0+ (1,0) [0|3] "" XXX
- SG_ NEW_SIGNAL_3 : 39|16@0+ (1,0) [0|3] "" XXX
- SG_ NEW_SIGNAL_4 : 55|16@0+ (1,0) [0|599] "" XXX
+ SG_ NEW_SIGNAL_3 : 43|4@0+ (1,0) [0|15] "" XXX
 
 BO_ 178 WHEEL_SPEED_2: 8 XXX
  SG_ NEW_SIGNAL_1 : 7|16@0+ (1,0) [0|65535] "" XXX
@@ -68,9 +67,9 @@ BO_ 178 WHEEL_SPEED_2: 8 XXX
  SG_ NEW_SIGNAL_3 : 39|16@0+ (1,0) [0|65535] "" XXX
 
 BO_ 180 SPEED: 8 XXX
- SG_ ENCODER : 39|8@0+ (1,0) [0|255] "" XXX
  SG_ CHECKSUM : 63|8@0+ (1,0) [0|255] "" XXX
  SG_ SPEED : 47|16@0+ (0.01,0) [0|250] "kph" XXX
+ SG_ ENCODER : 39|8@0+ (1,0) [0|255] "" XXX
 
 BO_ 295 GEAR_PACKET: 8 XXX
  SG_ CAR_MOVEMENT : 39|8@0- (1,0) [0|255] "" XXX
@@ -374,23 +373,32 @@ BO_ 1556 STEERING_LEVERS: 8 XXX
 BO_ 1568 SEATS_DOORS: 8 XXX
  SG_ SEATBELT_DRIVER_UNLATCHED : 62|1@0+ (1,0) [0|1] "" XXX
  SG_ DOOR_OPEN_FL : 45|1@0+ (1,0) [0|1] "" XXX
- SG_ DOOR_OPEN_RL : 42|1@0+ (1,0) [0|1] "" XXX
  SG_ DOOR_OPEN_RR : 43|1@0+ (1,0) [0|1] "" XXX
  SG_ DOOR_OPEN_FR : 44|1@0+ (1,0) [0|1] "" XXX
+ SG_ DOOR_OPEN_RL : 42|1@0+ (1,0) [0|1] "" XXX
 
 BO_ 186 MSG_0xBA: 8 XXX
 
 BO_ 562 MSG_0x232: 8 XXX
+ SG_ NEW_SIGNAL_1 : 7|8@0+ (1,0) [0|255] "" XXX
+ SG_ NEW_SIGNAL_2 : 15|8@0+ (1,0) [0|255] "" XXX
+ SG_ NEW_SIGNAL_4 : 31|8@0+ (1,0) [0|255] "" XXX
 
 BO_ 708 ENGINE_SPEED: 8 XXX
+ SG_ NEW_SIGNAL_1 : 15|8@0+ (1,0) [0|255] "" XXX
+ SG_ NEW_SIGNAL_2 : 63|8@0+ (1,0) [0|255] "" XXX
 
 BO_ 948 APERIODIC: 8 XXX
 
 BO_ 920 FUEL: 8 XXX
 
 BO_ 705 THROTTLE_PEDAL: 8 XXX
+ SG_ NEW_SIGNAL_1 : 23|8@0+ (1,0) [0|255] "" XXX
+ SG_ NEW_SIGNAL_2 : 39|8@0+ (1,0) [0|255] "" XXX
+ SG_ NEW_SIGNAL_3 : 63|8@0+ (1,0) [0|255] "" XXX
 
 BO_ 1600 0x640: 8 XXX
+ SG_ NEW_SIGNAL_1 : 47|8@0+ (1,0) [0|255] "" XXX
 
 BO_ 1592 638: 8 XXX
 
@@ -404,6 +412,42 @@ BO_ 1569 621: 8 XXX
 
 BO_ 1553 611: 8 XXX
 
+BO_ 1245 4dd: 8 XXX
+
+BO_ 1244 4dc: 8 XXX
+
+BO_ 1224 4c8: 8 XXX
+
+BO_ 1219 4c3: 8 XXX
+
+BO_ 1217 4c1: 8 XXX
+
+BO_ 720 2d0: 8 XXX
+ SG_ NEW_SIGNAL_1 : 15|8@0+ (1,0) [0|255] "" XXX
+ SG_ NEW_SIGNAL_2 : 63|8@0+ (1,0) [0|255] "" XXX
+
+BO_ 928 3a0: 8 XXX
+
+BO_ 1088 440: 8 XXX
+
+BO_ 1090 442: 8 XXX
+
+BO_ 916 394: 8 XXX
+
+BO_ 947 3b3: 8 XXX
+
+BO_ 1552 610: 8 XXX
+
+BO_ 896 380: 8 XXX
+
+BO_ 906 38a: 8 XXX
+
+BO_ 929 3a1: 8 XXX
+
+BO_ 944 3b0: 8 XXX
+
+BO_ 945 3b1: 8 XXX
+
 
 
 
@@ -412,6 +456,8 @@ CM_ SG_ 36 YAW_RATE "verify";
 CM_ SG_ 36 STEERING_TORQUE "does not seem the steer torque, tbd";
 CM_ SG_ 37 STEER_FRACTION "1/15th of the signal STEER_ANGLE, which is 1.5 deg; note that 0x8 is never set";
 CM_ SG_ 37 STEER_RATE "factor is tbd";
+CM_ SG_ 176 NEW_SIGNAL_3 "0x1100-0x110F repeated";
+CM_ SG_ 178 NEW_SIGNAL_3 "0x1100-0x110f repeated";
 CM_ SG_ 467 SET_SPEED "43 kph are shown as 28mph, so conversion isnt perfect";
 CM_ SG_ 550 BRAKE_PRESSURE "seems prop to pedal force";
 CM_ SG_ 550 BRAKE_POSITION "seems proportional to pedal displacement, unclear the max value of 0x1c8";
@@ -422,6 +468,8 @@ CM_ SG_ 608 STEER_TORQUE_DRIVER "driver torque";
 CM_ SG_ 608 STEER_OVERRIDE "set when driver torque exceeds a certain value";
 CM_ SG_ 614 ANGLE "set to measured angle when ipas control isn't active";
 CM_ SG_ 1042 SET_ME_1 "unclear what this is, nut it's always 1 in drive traces";
+CM_ SG_ 705 NEW_SIGNAL_3 "0x0801??01??ca00??";
+CM_ SG_ 720 NEW_SIGNAL_2 "0xd??1000720003??";
 VAL_ 295 GEAR 0 "P" 1 "R" 2 "N" 3 "D" 4 "B" ;
 VAL_ 466 CRUISE_STATE 8 "active" 7 "standstill" 1 "off" ;
 VAL_ 610 STATE 5 "override" 3 "enabled" 1 "disabled" ;
